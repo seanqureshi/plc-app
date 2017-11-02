@@ -7,9 +7,10 @@ const express = require('express'),
     passport = require('passport'),
     Auth0Strategy = require('passport-auth0'),
     massive = require('massive'),
+    cc = require('../src/ducks/campaigns_controller'),
     port = 3035; 
 
-const app = express();
+const app = module.exports = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(session({
@@ -84,16 +85,23 @@ app.get('/logout', function(req, res){
 // app.put('/api/users/:id', uc.updateUser );
 // app.delete('/api/users/:id', uc.deleteUser );
 
-// // CAMPAIGN ENDPOINTS
-// app.post('/api/campaign', cc.createCamp );
-// app.get('/api/campaign', cc.getCamps );
-// app.get('/api/campaign/:id', cc.getCamp );
-// app.put('/api/campaign/:id', cc.updateCamp );
-// app.delete('/api/campaign/:id', cc.deleteCamp );
+// CAMPAIGN ENDPOINTS
+app.post('/api/campaign', cc.createCamp );
+app.get('/api/campaigns', cc.getCamps );
+app.get('/api/campaign/:id', cc.getCamp );
+app.put('/api/campaign/:id', cc.updateCamp );
+app.delete('/api/campaign/:id', cc.deleteCamp );
 
-// // AMOUNT ENDPOINTS
-// app.post('/api/donor', ac.createAmt );
-// app.get('/api/donor/:id', ac.getAmts );
+// // DONATION ENDPOINTS
+// app.post('/api/donor', ac.addDonation );
+// app.get('/api/donors', ac.getDonations );
+// app.get('/api/donor/:id', ac.getDonation );
+
+// // COMMENTS ENDPOINTS
+// app.post('/api/comment', ac.addDonation );
+// app.get('/api/comments', ac.getDonations );
+// app.get('/api/comment/:id', ac.getDonation );
+// app.delete('/api/commentn/:id', cc.deleteComment);
 
 
 
