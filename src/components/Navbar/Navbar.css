@@ -1,0 +1,19 @@
+.main_header {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    width: 100%;
+}
+
+.logo_container {
+    position: relative;
+    margin: 11px;
+}
+
+.social_media {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 45px;
+}
+

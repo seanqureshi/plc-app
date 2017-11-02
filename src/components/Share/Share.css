@@ -1,0 +1,48 @@
+.box {
+    width: 75px;
+    height: 7px;
+    background-color: #253447;
+  }
+
+.text_box {
+    color: #253447;
+    font-family: serif;
+    margin: 20px;
+}
+
+.title {
+  display: flex;
+  font-family: Arial;
+  color: #253447;
+  justify-content: center;
+  margin: 15px;
+}
+
+.social_box {
+  margin:5px;
+  margin-top: 20px;
+}
+
+.share_text {
+    color: #253447;
+    font-family: serif;
+    margin: 0px 20px 20px 20px;
+}
+
+.share_btn {
+  background-color: #7ea2bd;
+  color: #fff;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial;
+  padding: 10px;
+  margin-left:20px;
+  border-radius: 2px;
+}
+
+.btn_container{
+  display: flex;
+  margin-bottom:20px;
+}

@@ -1,0 +1,14 @@
+.explore_btn {
+    color: #fff;
+    background-color: #7ea2bd;
+    width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 10px 45px 10px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+

@@ -1,0 +1,123 @@
+.first-bg {
+    background: url('./img/PLC-1.png');
+  }
+  
+.second-bg {
+    background: url('./img/PLC-2.png');
+  }
+  
+.third-bg {
+    background: url('./img/PLC-3.png');
+  }
+
+.fourth-bg {
+    background: url('./img/PLC-4.png');
+  }
+
+.fifth-bg {
+    background: url('./img/PLC-5.png');
+  }
+  
+.first-bg , .second-bg , .third-bg , .fourth-bg, .fifth-bg {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.phone-panel {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-around;
+    font-family: Arial;
+    color: #253447;
+    height: 100vh;
+    margin: 0;
+}
+
+.empty {
+    width: 270px;
+    height: 50px;
+}
+
+.circle_nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+} 
+  
+.relief {
+    color: white;
+}
+
+.box_line {
+    width: 100px;
+    height: 12px;
+    background-color: white;
+}
+
+.body_text {
+    color: white;
+    font-family: serif;
+}
+
+.body_text2 {
+    color: #253447;
+    font-family: serif;
+}
+
+.relief_container {
+    width: 255px;
+}
+
+.arrow {
+    margin-top: -5px;
+}
+
+.learn {
+    width: 185px;
+    height: 30px;
+    font-family: Arial;
+    color: white;
+    border-width: 2px;
+    border-style: solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.learn2 {
+    width: 200px;
+    height: 30px;
+    font-family: Arial;
+    color: #253447;
+    border-width: 2px;
+    border-style: solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn_start {
+    display: flex;
+    width: 225px;
+    height: 30px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-family: Arial;
+    color: #253447;
+    padding: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    opacity: 0.9;
+}
+
+.idea {
+    width: 225px;
+    height: 15px;
+}

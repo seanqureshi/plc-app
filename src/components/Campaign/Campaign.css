@@ -1,0 +1,54 @@
+.input_name {
+    display: flex;
+    font-family: serif;
+    color: #253447;
+    margin: 20px;
+    font-weight: bold;
+}
+
+.input_field {
+    display: flex;
+    font-family: serif;
+    margin: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    height: 25px;
+}
+
+.input_campaign {
+    display: flex;
+    font-family: serif;
+    margin: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    height: 50px;
+}
+
+input[type=text] {
+    width: 80%;
+ }
+
+.submit_btn {
+    color: #fff;
+    background-color: #e6233d;
+    width: 90%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 10px 20px 10px;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+.image_container {
+    display: flex;
+    margin-top:-10px;
+}
+
+.image_btn {
+    margin-left: 20px;
+    text-decoration: none;
+}
