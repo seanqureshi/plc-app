@@ -111,7 +111,7 @@
     background-color: white;
     font-family: Arial;
     color: #253447;
-    padding: 15px;
+    padding: 25px;
     font-weight: bold;
     border-radius: 50px;
     opacity: 0.9;
@@ -120,4 +120,8 @@
 .idea {
     width: 225px;
     height: 15px;
+}
+
+.build {
+    animation-delay: 1s;
 }

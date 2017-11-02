@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Navbar from '../Navbar/Navbar';
 import NavWhite from '../Nav_white/Nav_white';
 import Footer from '../Footer/Footer';
+import animated from 'animate.css';
+import WOW from 'wowjs';
 
 import phone from './img/iPhone.png';
 import dot from './img/Blue-dot.png';
@@ -20,6 +22,9 @@ import './Landing.css';
 
 
 export default class Landing extends Component {
+    componentDidMount() {
+        new WOW.WOW().init();
+      }
     render() {
         return (
             <section className="Landing">
@@ -27,9 +32,9 @@ export default class Landing extends Component {
                     <Navbar />
                     <center><div className="phone-panel">
                         <div width="25px"></div>
-                        <h1 className="build">BUILD A CAMPAIGN</h1>
+                        <h1 className="build fade animated fadeInLeft">BUILD A CAMPAIGN</h1>
                         <img src={phone} alt="iPhone" width="290px"></img>
-                        <h1 className="build">AND REBUILD LIVES</h1>
+                        <h1 className="build fade animated fadeInRight">AND REBUILD LIVES</h1>
                         <div className="circle_nav">
                             <a href="#first"><img src={dot} alt="nav1" width="25px"></img></a>
                             <a href="#second"><img src={circle} alt="nav2" width="25px"></img></a>
@@ -44,7 +49,7 @@ export default class Landing extends Component {
                     <NavWhite />
                     <div className="phone-panel">
                         <div width="25px"></div>
-                        <center><div className="relief_container">
+                        <center><div className="relief_container wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                             <img src={relief} alt="Food, Water, Medical Relief Icon" width="120px"></img>
                             <h1 className="relief">RELIEF</h1>
                             <div className="box_line"></div>
@@ -57,7 +62,7 @@ export default class Landing extends Component {
                                 <div className="arrow"><img src={arrow_white} alt="next" width="75px">
                                 </img></div></a></center>
 
-                        <center><div className="relief_container">
+                        <center><div className="relief_container wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
                             <img src={heart} alt="Empowerment Icon" width="120px"></img>
                             <h1 className="relief">JOB CREATION</h1>
                             <div className="box_line"></div>
@@ -97,7 +102,7 @@ export default class Landing extends Component {
                     <Navbar />
                     <div className="phone-panel">
                         <div width="25px"></div>
-                        <center><div className="relief_container">
+                        <center><div className="relief_container wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
                             <h1 className="header4">GET INVOLVED</h1>
                             <p className="body_text2">Love the people no one else will through a creative fundraiser. Not sure where to start? Explore ideas below.</p>
                             <img src={line} alt="Heart line icon" width="200px"></img>
@@ -110,7 +115,7 @@ export default class Landing extends Component {
                                 <div className="arrow"><img src={arrow} alt="next" width="75px">
                                 </img></div></a></center>
 
-                        <center><div className="relief_container">
+                        <center><div className="relief_container wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
                             <h1 className="header4">MAKE A DIFFERENCE</h1>
                             <p className="body_text2">Empower refugees and help families caught in the fight against ISIS. Help rebuild lives from the ashes of war.</p>
                             <img src={line} alt="Heart line icon" width="200px"></img>
@@ -140,7 +145,6 @@ export default class Landing extends Component {
                             <a href="#fourth"><img src={circle_white} alt="nav4" width="25px"></img></a>
                             <a href="#fifth"><img src={dot_white} alt="nav5" width="25px"></img></a>
                         </div>
-
                     </div>
                 </div>
             </section>

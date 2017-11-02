@@ -84,10 +84,6 @@ app.get('/logout', function(req, res){
 // app.put('/api/users/:id', uc.updateUser );
 // app.delete('/api/users/:id', uc.deleteUser );
 
-// // FRIEND ENDPOINTS
-// app.get('/api/friend/:id', fc.getOne);
-// app.get('/api/friend/list', fc.getList);
-
 // // CAMPAIGN ENDPOINTS
 // app.post('/api/campaign', cc.createCamp );
 // app.get('/api/campaign', cc.getCamps );
