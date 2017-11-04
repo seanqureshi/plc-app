@@ -1,3 +1,28 @@
+.wrap {
+    background: #EFEFEF;  /* fallback for old browsers */
+    background: -webkit-radial-gradient(circle,#EFEFEF, #536976);  /* Chrome 10-25, Safari 5.1-6 */
+    background: radial-gradient(circle, #EFEFEF, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.camp-container {
+    display: grid;
+    justify-content: center;
+}
+
+.campaign-text {
+    margin-left: 280px;
+    padding: 15px;
+    font-family: sans-serif;
+    color: #fff;
+    font-size: x-small;
+    z-index: 3;
+    position: absolute;
+}
+
+.form-container {
+    background: white;
+}
+
 .profile-cover {
     width: 375px;
     z-index: 1;
@@ -11,9 +36,9 @@
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    border: solid 1.1px #e5e5e5;
-    z-index: 5;
+    border: solid 2px #e5e5e5;
     position: absolute;
+    z-index: 5;
 }
 
 .display-name {
@@ -33,53 +58,6 @@
     box-sizing: border-box;
 }
 
-.input_name {
-    display: flex;
-    font-family: serif;
-    color: #253447;
-    margin-top: 15px;;
-    font-size: large;
-    margin-bottom: -10px;
-}
-
-.input_field {
-    display: flex;
-    font-family: serif;
-    margin-top: 15px;;
-    border: 1px solid #e5e5e5;
-    border-radius: 2px;
-    height: 25px;
-}
-
-.input_campaign {
-    display: flex;
-    font-family: serif;
-    margin-top: 15px;;
-    border: 1px solid #e5e5e5;
-    border-radius: 2px;
-    height: 50px;
-}
-
-.input_overview {
-    display: flex;
-    font-family: serif;
-    margin-top: 15px;;
-    border: 1px solid #e5e5e5;
-    border-radius: 2px;
-    height: 80px;
-    overflow-wrap: break-word;
-}
-
-input[type=text], textarea {
-    width: 375px;
-    padding: 10px;
- }
-
-.insert-image {
-    margin-top: 15px;
-    width: 100px;
-}
-
 .submit_btn{
     color: #fff;
     background-color: #e6233d;
@@ -94,12 +72,12 @@ input[type=text], textarea {
     text-shadow: none;
 }
 
-.image_container {
-    display: flex;
-    margin-top:-10px;
+.form-UI {
+    box-sizing: border-box;
+    margin: 2px 55px;  
 }
 
-.image_btn {
-    margin-left: 20px;
-    text-decoration: none;
+.img-button {
+    box-sizing: border-box;
+    margin: 20px 55px; 
 }

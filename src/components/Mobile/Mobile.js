@@ -11,7 +11,7 @@ import './Mobile.css';
 
 export default class Mobile extends Component {
     render() {
-        return (
+        return (            
             <section className="wrap">
                 <center>
                 <div className="phone-box">
@@ -25,12 +25,12 @@ export default class Mobile extends Component {
                             </div>
                         </Link>
                         <Link to='/explore'>
-                            <div className="mobile_home2">
+                            <div className="mobile_home">
                                 <img src={Banner2} alt="banner buttons" width="375px" />
                             </div>
                         </Link>
                         <Link to='/campaign'>
-                            <div className="mobile_home2">
+                            <div className="mobile_home">
                                 <img src={Banner3} alt="banner buttons" width="375px" />
                             </div>
                         </Link>
@@ -43,8 +43,10 @@ export default class Mobile extends Component {
                     <footer className="footer_mobile">
                         <FooterMobile />
                     </footer>
-                </div></center>
+                </div>
+                </center>                
             </section>
+            
         )
     }
 }

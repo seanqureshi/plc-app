@@ -3,6 +3,8 @@ import MobileNav from '../Mobile_navbar/Mobile_navbar';
 import Banner from './img/loveanyways.png';
 import Insert from './img/insert-img.png';
 import './Campaign.css';
+import TextFieldExampleSimple from './Form';
+import RaisedButtonExampleComplex from './Button';
 
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../ducks/users';
@@ -10,30 +12,29 @@ import { getUserInfo } from '../../ducks/users';
 
 class Campaign extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getUserInfo();
     }
 
     render() {
         const user = this.props.user
         return (
-            <section>
-                <header><MobileNav /></header>
-                <img className="profile-cover" alt="Profile Banner"src={Banner} />
-                <img className="profile-headshot" alt="Login to see your social media profile pic" src={user.profile_img} />
-                <div className="display-name">{ user ? user.username: null }</div>
-                <form className="form-box">
-                    <div className="input_name">Campaign Name</div>
-                    <textarea className="input_campaign" type="text" placeholder="Ex. Kinzie's 5th Birthday! Giving to Those Without." />
-                    <div className="input_name">Fundraiser Amount</div>
-                    <input className="input_field" type="text" placeholder="Ex. $500" />
-                    <div className="input_name">Upload Cover Image</div>
-                    <img className="insert-image" alt="Add Cover Here" src={Insert}/>
-                    <div className="input_name">Summary of Campaign</div>
-                    <textarea className="input_overview" type="text" placeholder="Share your story and how it intersected with Preemptive Love Coalition. Share how your friends can get involved in saving and rebuilding lives!" />
-                    <center><input className="submit_btn" type="submit" name="submit" value="CREATE" /></center>
-                </form>
-            </section>
+            <main className="wrap">
+                <section className="camp-container">
+                    <header><MobileNav /></header>
+                    <div className="form-container">
+                        <div className="campaign-text">#loveanyways</div>
+                        <img className="profile-cover" alt="Profile Banner" src={Banner} />
+                        <img className="profile-headshot" alt="Login to see your social media profile pic" src={user.profile_img} />
+                        <div className="display-name">{user ? user.username : null}</div>
+                        <TextFieldExampleSimple />
+                        <div className="img-button">
+                            <RaisedButtonExampleComplex />
+                        </div>
+                        <input className="submit_btn" type="submit" name="submit" value="CREATE" />
+                    </div>
+                </section>
+            </main>
         )
     }
 }
