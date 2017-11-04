@@ -1,0 +1,10 @@
+.wrap {
+    background: #EFEFEF;  /* fallback for old browsers */
+    background: -webkit-radial-gradient(circle,#EFEFEF, #536976);  /* Chrome 10-25, Safari 5.1-6 */
+    background: radial-gradient(circle, #EFEFEF, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.mobile_home {
+    margin-top: -4px;
+    margin-bottom: -4px;
+}

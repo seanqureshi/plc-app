@@ -1,7 +1,7 @@
 .top_container {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 375px;
     padding: 5px;
     background-color: #efefef;
     justify-content: space-between;

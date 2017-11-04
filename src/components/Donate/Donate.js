@@ -1,43 +1,67 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import MobileNav from '../Mobile_navbar/Mobile_navbar';
+import axios from 'axios';
+import StripeCheckout from 'react-stripe-checkout';
+import './Donate.css';
 
+// import Checkout from './CheckoutForm';
 
-// import '../css/stripe.css'
 
 export default class Donate extends Component {
-    render () {
+
+    constructor() {
+        super();
+
+        this.state = {
+            amount: 0
+        }
+        this.buttonClick1 = this.buttonClick1.bind(this);
+        this.buttonClick2 = this.buttonClick2.bind(this);
+        this.buttonClick3 = this.buttonClick3.bind(this);
+    }
+
+    buttonClick1() {
+        this.setState({
+            amount: 2500
+        })
+    }
+
+    buttonClick2(e) {
+        this.setState({
+            amount: 5000
+        })
+    }
+
+    buttonClick3(e) {
+        this.setState({
+            amount: 10000
+        })
+    }
+
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post('/api/payment', { token, amount: this.state.amount }).then(response => {
+            alert('Payment Processed!')
+        })
+    }
+
+    render() {
         return (
-            <section>
-                <header><MobileNav /></header>
-                {/* <div>
-                    <form>
-                    <div class="group">
-                        <label>
-                        <span>Name</span>
-                        <input name="cardholder-name" class="field" placeholder="Jane Doe" />
-                        </label>
-                        <label>
-                        <span>Phone</span>
-                        <input class="field" placeholder="(123) 456-7890" type="tel" />
-                        </label>
-                    </div>
-                    <div class="group">
-                        <label>
-                        <span>Card</span>
-                        <div id="card-element" class="field"></div>
-                        </label>
-                    </div>
-                    <button type="submit">Pay $25</button>
-                    <div class="outcome">
-                        <div class="error" role="alert"></div>
-                        <div class="success">
-                        Success! Your Stripe token is <span class="token"></span>
-                    </div>
-                    </div>
-                </form>
-                </div> */}
-            </section>
-        )
+            <div className="donate-container">
+                <MobileNav />
+                <button className="donate-box" onClick={() => this.buttonClick1()}>$25</button>
+                <button className="donate-box" onClick={() => this.buttonClick2()}>$50</button>
+                <button className="donate-box" onClick={() => this.buttonClick3()}>$100</button>
+                <StripeCheckout className="s2member-pro-stripe-submit"
+                    token={this.onToken}
+                    stripeKey={'pk_test_yaniwfUg4A2s3HU5GhT3KVcm'}
+                    amount={this.state.amount}
+                    label={'Donate with Card'}
+                    image="https://preemptivelove.gift/wp-content/uploads/2017/04/logo-sticky.png"
+
+                />
+            </div >
+        );
     }
 }
 

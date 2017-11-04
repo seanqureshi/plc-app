@@ -13,34 +13,37 @@ export default class Mobile extends Component {
     render() {
         return (
             <section className="wrap">
-                <header className = "mobile_nav">
-                    <MobileNav />
-                </header>
-                <main>
-                    <Link to='/about'>
-                    <div className = "mobile_home">
-                        <img src= { Banner1 } alt="banner buttons" width="375px" />
-                    </div>
-                    </Link>
-                    <Link to='/explore'>
-                    <div className = "mobile_home">
-                        <img src= { Banner2 } alt="banner buttons" width="375px" />
-                    </div>
-                    </Link>
-                    <Link to='/campaign'>
-                    <div className = "mobile_home">
-                        <img src= { Banner3 } alt="banner buttons" width="375px" />
-                    </div>
-                    </Link>
-                    <Link to='/share'>
-                    <div className = "mobile_home">
-                        <img src= { Banner4 } alt="banner buttons" width="375px" />
-                    </div>
-                    </Link>
-                </main>
-                <footer className = "footer_mobile">
-                    <FooterMobile />
-                </footer>
+                <center>
+                <div className="phone-box">
+                    <header className="mobile_nav">
+                        <MobileNav />
+                    </header>
+                    <main>
+                        <Link to='/about'>
+                            <div className="mobile_home">
+                                <img src={Banner1} alt="banner buttons" width="375px" />
+                            </div>
+                        </Link>
+                        <Link to='/explore'>
+                            <div className="mobile_home2">
+                                <img src={Banner2} alt="banner buttons" width="375px" />
+                            </div>
+                        </Link>
+                        <Link to='/campaign'>
+                            <div className="mobile_home2">
+                                <img src={Banner3} alt="banner buttons" width="375px" />
+                            </div>
+                        </Link>
+                        <Link to='/share'>
+                            <div className="mobile_home">
+                                <img src={Banner4} alt="banner buttons" width="375px" />
+                            </div>
+                        </Link>
+                    </main>
+                    <footer className="footer_mobile">
+                        <FooterMobile />
+                    </footer>
+                </div></center>
             </section>
         )
     }
