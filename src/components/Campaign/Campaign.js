@@ -21,11 +21,11 @@ class Campaign extends Component {
         return (
             <main className="wrap">
                 <section className="camp-container">
-                    <header><MobileNav /></header>
+                    <MobileNav />
                     <div className="form-container">
                         <div className="campaign-text">#loveanyways</div>
                         <img className="profile-cover" alt="Profile Banner" src={Banner} />
-                        <img className="profile-headshot" alt="Login to see your social media profile pic" src={user.profile_img} />
+                        <img className="profile-headshot" alt="Login to see your social media profile pic and name" src={user.profile_img} />
                         <div className="display-name">{user ? user.username : null}</div>
                         <TextFieldExampleSimple />
                         <div className="img-button">

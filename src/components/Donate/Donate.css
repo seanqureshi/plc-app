@@ -1,11 +1,74 @@
-.donate-box {
-    width: 100px;
-    height: 50px;
-    background: red;
-    color: white;
-    margin: 100px;
-    border: solid 1 gray;
+.wrap {
+    background: #EFEFEF;  /* fallback for old browsers */
+    background: -webkit-radial-gradient(circle,#EFEFEF, #536976);  /* Chrome 10-25, Safari 5.1-6 */
+    background: radial-gradient(circle, #EFEFEF, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.donate-container {
+    display: grid;
+    justify-content: center;
+}
 
+.donate-form {
+    background: white;
+    width: 375px;
+}
+
+.donate-textbox {
+    display: grid;
+    justify-content: center;
+    font-family: serif;
+    color: #253447;
+    background: white;
+    width: 375px;
+    padding: 40px;
+}
+
+.suggested {
+    font-family: serif;
+    color: #253447;
+    padding-left: 40px;
+    margin: -2px 0px;
+    font-weight: lighter;
+    margin-top: -20px;
+}
+
+.donate-pic {
+    width: 375px;
+    padding: 40px;
+    margin-top: -40px;
+    border: solid 5 #253447;
+    background: white;
+}
+
+.donate-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 25px;
+}
+
+.donate-box {
+    width: 80px;
+    height: 40px;
+    border: 4px solid #e5e5e5;    
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);    
+    background-color: white;     
+    cursor: pointer;
+    font-family: serif;
+    color: #253447;
+    font-size: 15px;
+}
+
+.stripe-submit {
+    box-sizing: border-box;
+    width: 315px;
+    margin: 30px;
+}
+
+.form-UI {
+    display: grid;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: -10px 0px;
+}
 
