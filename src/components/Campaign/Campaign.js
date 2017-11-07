@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MobileNav from '../Mobile_navbar/Mobile_navbar';
 import Banner from './img/loveanyways.png';
-import Insert from './img/insert-img.png';
 import './Campaign.css';
 import TextFieldExampleSimple from './Form';
 
@@ -21,15 +20,17 @@ class Campaign extends Component {
             <main className="wrap">
                 <section className="camp-container">
                     <MobileNav />
+
                     <div className="form-container">
                         <div className="campaign-text">#loveanyways</div>
                         <img className="profile-cover" alt="Profile Banner" src={Banner} />
                         <img className="profile-headshot" alt="Login to see your social media profile pic and name" src={user.profile_img} />
                         <div className="display-name">{user ? user.username : null}</div>
-                        <div className="form-styling">
-                            <TextFieldExampleSimple />
-                        </div>
                     </div>
+                    <div className="form-styling">
+                        <TextFieldExampleSimple />
+                    </div>
+
                 </section>
             </main>
         )

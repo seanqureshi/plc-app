@@ -23,6 +23,17 @@
     background: white;
 }
 
+.form-create {
+    box-sizing: border-box;
+    width: 375px;
+    padding-left: 60px;
+    padding-top: 15px;
+}
+
+.form-styling{
+    background: white;
+}
+
 .profile-cover {
     width: 375px;
     z-index: 1;
@@ -53,3 +64,21 @@
     font-size: x-large;
 }
 
+.btn-dropimg {
+    width: 200px;
+    border: 4px solid #e5e5e5;    
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);    
+    background-color: white;     
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #253447;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.btn-dropimg:hover {
+    background-color: #253447;    
+    color: white; 
+    border: 4px solid #253447; 
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);        
+}

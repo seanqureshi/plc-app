@@ -44,12 +44,6 @@ export default class Donate extends Component {
         })
     }
 
-    handleAmt(e) {
-        this.setState({
-            amount: (e.target.value*100),
-        })
-    }
-
     onToken = (token) => {
         token.card = void 0;
         axios.post('/api/payment', { token, amount: this.state.amount }, {

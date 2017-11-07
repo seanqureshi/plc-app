@@ -9,7 +9,6 @@ const express = require('express'),
     massive = require('massive'),
     cc = require('./campaigns_controller'),
     stripe = require('stripe')('sk_test_z1qkTOZCBRBRxUrzRdN69F0Y'),
-    // cloudinary = require('cloudinary')
     port = 3035;
 
 const app = express();
@@ -22,13 +21,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-// cloudinary.config({
-//     cloud_name: process.env.CLOUD_NAME,
-//     api_key: process.env.API_KEY,
-//     api_secret: process.env.API_SECRET
-// });
-
 
 massive(process.env.CONNECTION_STRING).then((db) => {
     app.set('db', db);
@@ -86,16 +78,6 @@ app.get('/logout', function (req, res) {
     return res.redirect('http://localhost:3000/')
 });
 
-// cloudinary.uploader.upload(
-//     // req.files.myImage.path,
-//     app.post('/api/campaign', cc.createCamp),
-//     function (result) { console.log(result); },
-//     {
-//         public_id: process.env.CLOUD_NAME,
-//         crop: 'limit',
-//         width: 375
-//     }
-// )
 
 // // USER ENDPOINTS
 // app.post('/api/users', uc.createUser );
