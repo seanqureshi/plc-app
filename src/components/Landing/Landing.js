@@ -24,7 +24,7 @@ import './Landing.css';
 export default class Landing extends Component {
     componentDidMount() {
         new WOW.WOW().init();
-      }
+    }
     render() {
         return (
             <section className="Landing">
@@ -54,7 +54,9 @@ export default class Landing extends Component {
                             <h1 className="relief">RELIEF</h1>
                             <div className="box_line"></div>
                             <p className="body_text">We go where others don’t. We provide emergency food, water, and medical care on the frontlines of conflict in Syria and Iraq.</p>
-                            <div className="learn">LEARN MORE</div>
+                            <a href={process.env.REACT_APP_LOGIN}>
+                                <div className="learn">LEARN MORE</div>
+                            </a>
                         </div></center>
 
                         <center><img src={phone} alt="iPhone" width="290px"></img>
@@ -67,7 +69,9 @@ export default class Landing extends Component {
                             <h1 className="relief">JOB CREATION</h1>
                             <div className="box_line"></div>
                             <p className="body_text">Refugees should be able to do more than survive. They should flourish. We help displaced women and men reclaim their future.</p>
-                            <div className="learn">LEARN MORE</div>
+                            <a href={process.env.REACT_APP_LOGIN}>
+                                <div className="learn">LEARN MORE</div>
+                            </a>Ï
                         </div></center>
 
                         <div className="circle_nav">
@@ -106,7 +110,9 @@ export default class Landing extends Component {
                             <h1 className="header4">GET INVOLVED</h1>
                             <p className="body_text2">Love the people no one else will through a creative fundraiser. Not sure where to start? Explore ideas below.</p>
                             <img src={line} alt="Heart line icon" width="200px"></img>
-                            <div className="learn2">FIND INSPIRATION</div>
+                            <a href={process.env.REACT_APP_LOGIN}>
+                                <div className="learn2">FIND INSPIRATION</div>
+                            </a>
                         </div></center>
 
                         <center><img src={phone} alt="iPhone" width="290px"></img>
@@ -119,7 +125,9 @@ export default class Landing extends Component {
                             <h1 className="header4">MAKE A DIFFERENCE</h1>
                             <p className="body_text2">Empower refugees and help families caught in the fight against ISIS. Help rebuild lives from the ashes of war.</p>
                             <img src={line} alt="Heart line icon" width="200px"></img>
-                            <div className="learn2">START A FUNDRAISER</div>
+                            <a href={process.env.REACT_APP_LOGIN}>
+                                <div className="learn2">START A FUNDRAISER</div>
+                            </a>
                         </div></center>
 
                         <div className="circle_nav">
@@ -135,7 +143,9 @@ export default class Landing extends Component {
                     <NavWhite />
                     <div className="phone-panel">
                         <div width="25px"></div>
-                        <div className="btn_start">START CAMPAIGN</div>
+                        <a href={process.env.REACT_APP_LOGIN}>
+                            <div className="btn_start">START CAMPAIGN</div>
+                        </a>
                         <img className="phone-last" src={phone} alt="iPhone" width="290px"></img>
                         <div className="idea"></div>
                         <div className="circle_nav">

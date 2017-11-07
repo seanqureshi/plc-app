@@ -1,7 +1,7 @@
 .social_footer {
     display: flex;
     justify-content: space-around;
-    width: 375px;
+    width: 365px;
     padding: 5px;
     background-color: #efefef;
 }

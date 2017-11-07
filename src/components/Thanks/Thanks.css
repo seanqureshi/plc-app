@@ -1,0 +1,77 @@
+.wrap {
+    background: #EFEFEF;  /* fallback for old browsers */
+    background: -webkit-radial-gradient(circle,#EFEFEF, #536976);  /* Chrome 10-25, Safari 5.1-6 */
+    background: radial-gradient(circle, #EFEFEF, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.share-container {
+    display: grid;
+    justify-content: center;
+}
+
+.main_container {
+    background: white;
+}
+  
+.ty-title{
+    font-family: serif;
+    font-size: 300%;
+    font-weight: lighter;
+}
+
+.heart-icon {
+    margin-top: 30px;
+    margin-bottom: -40px;
+}
+
+.sub-title {
+    font-family: serif;
+    font-weight: lighter;
+    margin-top: -30px;
+}
+  
+.social-btns {
+    width: 75px;
+    height: 7px;
+    background-color: #253447;
+    margin: 30px 0px;
+}
+
+.title {
+    display: flex;
+    font-family: Arial;
+    color: #253447;
+    justify-content: center;
+    margin: 15px;
+}
+
+.share-text {
+    color: #253447;
+    font-family: serif;
+    margin: 0px 20px 20px 20px;
+}
+
+.share-btn {
+    background-color: #ee233d;
+    color: #fff;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial;
+    padding: 10px;
+    margin-left:20px;
+    border-radius: 2px;
+    margin-bottom: 40px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);        
+}
+  
+.btn-container{
+    display: flex;
+    margin-bottom:20px;
+    padding: 10px;
+}
+
+.convo {
+    margin-bottom: -10px;
+}

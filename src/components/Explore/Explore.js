@@ -17,15 +17,17 @@ export default class Explore extends Component {
     render() {
         return (
             <div className="wrap">
-                <center><section className="main_container">
+                <center><section className="explore-container">
                     <MobileNav />
-                    <Carousel>
-                        <div><CampaignCard img={Explore1} path="/idea1" /></div>
-                        <div><CampaignCard img={Explore2} path="/idea2" /></div>
-                        <div><CampaignCard img={Explore3} path="/idea3" /></div>
-                        <div><CampaignCard img={Explore4} path="/idea4" /></div>
-                    </Carousel>
-                    <MobileFooter />
+                    <div className="explore-box">
+                        <Carousel decorators={false}>
+                            <div><CampaignCard img={Explore1} path="/idea1" /></div>
+                            <div><CampaignCard img={Explore2} path="/idea2" /></div>
+                            <div><CampaignCard img={Explore3} path="/idea3" /></div>
+                            <div><CampaignCard img={Explore4} path="/idea4" /></div>
+                        </Carousel>
+                        <MobileFooter />
+                    </div>
                 </section></center>
             </div>
         )

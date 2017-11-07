@@ -9,7 +9,8 @@ const express = require('express'),
     massive = require('massive'),
     cc = require('./campaigns_controller'),
     stripe = require('stripe')('sk_test_z1qkTOZCBRBRxUrzRdN69F0Y'),
-    port = 3035; 
+    // cloudinary = require('cloudinary')
+    port = 3035;
 
 const app = express();
 app.use(bodyParser.json());
@@ -22,8 +23,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// cloudinary.config({
+//     cloud_name: process.env.CLOUD_NAME,
+//     api_key: process.env.API_KEY,
+//     api_secret: process.env.API_SECRET
+// });
 
-massive(process.env.CONNECTION_STRING).then( (db) => {
+
+massive(process.env.CONNECTION_STRING).then((db) => {
     app.set('db', db);
 })
 
@@ -32,12 +39,12 @@ passport.use(new Auth0Strategy({
     clientID: process.env.AUTH_CLIENT_ID,
     clientSecret: process.env.AUTH_CLIENT_SECRET,
     callbackURL: process.env.AUTH_CALLBACK
-  }, function(accessToken, refreshToken, extraParams, profile, done) {
+}, function (accessToken, refreshToken, extraParams, profile, done) {
 
     const db = app.get('db');
     const userData = profile._json;
-    db.find_user([userData.identities[0].user_id]).then( user => {
-        if (user[0]){
+    db.find_user([userData.identities[0].user_id]).then(user => {
+        if (user[0]) {
             return done(null, user[0].user_id);
         } else {
             db.create_user([
@@ -45,7 +52,7 @@ passport.use(new Auth0Strategy({
                 userData.email,
                 userData.picture,
                 userData.identities[0].user_id
-            ]).then( user => {
+            ]).then(user => {
                 return done(null, user[0].user_id)
             })
         }
@@ -53,10 +60,10 @@ passport.use(new Auth0Strategy({
     })
 }));
 
-passport.serializeUser(function(id, done){
-    done(null, id) 
+passport.serializeUser(function (id, done) {
+    done(null, id)
 });
-passport.deserializeUser(function(id, done){
+passport.deserializeUser(function (id, done) {
     app.get('db').find_session_user([id]).then(user => {
         done(null, user[0]); // id or profile info put on req.user
     })
@@ -67,18 +74,28 @@ app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/mobile',
     failureRedirect: '/auth'
 }));
-app.get('/auth/me', function(req,res){
-    if(req.user){
+app.get('/auth/me', function (req, res) {
+    if (req.user) {
         return res.status(200).send(req.user)
     } else {
         res.status(401).send('Unauthorized: Need to log in.')
     }
 });
-app.get('/logout', function(req, res){
+app.get('/logout', function (req, res) {
     req.logOut();
     return res.redirect('http://localhost:3000/')
 });
 
+// cloudinary.uploader.upload(
+//     // req.files.myImage.path,
+//     app.post('/api/campaign', cc.createCamp),
+//     function (result) { console.log(result); },
+//     {
+//         public_id: process.env.CLOUD_NAME,
+//         crop: 'limit',
+//         width: 375
+//     }
+// )
 
 // // USER ENDPOINTS
 // app.post('/api/users', uc.createUser );
@@ -88,11 +105,11 @@ app.get('/logout', function(req, res){
 // app.delete('/api/users/:id', uc.deleteUser );
 
 // CAMPAIGN ENDPOINTS
-app.post('/api/campaign', cc.createCamp );
-app.get('/api/campaigns', cc.getCamps );
-app.get('/api/campaign/:id', cc.getCamp );
-app.put('/api/campaign/:id', cc.updateCamp );
-app.delete('/api/campaign/:id', cc.deleteCamp );
+app.post('/api/campaign', cc.createCamp);
+app.get('/api/campaigns', cc.getCamps);
+app.get('/api/campaign/:id', cc.getCamp);
+app.put('/api/campaign/:id', cc.updateCamp);
+app.delete('/api/campaign/:id', cc.deleteCamp);
 
 // // DONATION ENDPOINTS
 // app.post('/api/donor', ac.addDonation );
@@ -105,42 +122,42 @@ app.delete('/api/campaign/:id', cc.deleteCamp );
 // app.get('/api/comment/:id', ac.getDonation );
 // app.delete('/api/commentn/:id', cc.deleteComment);
 
-app.post('/api/payment', function(req, res, next){
+app.post('/api/payment', function (req, res, next) {
     //convert amount to pennies
     const amountArray = req.body.amount.toString().split('');
     const pennies = [];
     for (var i = 0; i < amountArray.length; i++) {
-      if(amountArray[i] === ".") {
-        if (typeof amountArray[i + 1] === "string") {
-          pennies.push(amountArray[i + 1]);
+        if (amountArray[i] === ".") {
+            if (typeof amountArray[i + 1] === "string") {
+                pennies.push(amountArray[i + 1]);
+            } else {
+                pennies.push("0");
+            }
+            if (typeof amountArray[i + 2] === "string") {
+                pennies.push(amountArray[i + 2]);
+            } else {
+                pennies.push("0");
+            }
+            break;
         } else {
-          pennies.push("0");
+            pennies.push(amountArray[i])
         }
-        if (typeof amountArray[i + 2] === "string") {
-          pennies.push(amountArray[i + 2]);
-        } else {
-          pennies.push("0");
-        }
-          break;
-      } else {
-          pennies.push(amountArray[i])
-      }
     }
     const convertedAmt = parseInt(pennies.join(''));
-  
-    const charge = stripe.charges.create({
-    amount: convertedAmt, // amount in cents, again
-    currency: 'usd',
-    source: req.body.token.id,
-    description: 'Test charge from react app'
-  }, function(err, charge) {
-      if (err) return res.sendStatus(500)
-      return res.sendStatus(200);
-    // if (err && err.type === 'StripeCardError') {
-    //   // The card has been declined
-    // }
-  });
-  });
-  
 
-app.listen(port, ()=> console.log(`listening on port ${port}`));    
+    const charge = stripe.charges.create({
+        amount: convertedAmt, // amount in cents, again
+        currency: 'usd',
+        source: req.body.token.id,
+        description: 'Test charge from react app'
+    }, function (err, charge) {
+        if (err) return res.sendStatus(500)
+        return res.sendStatus(200);
+        // if (err && err.type === 'StripeCardError') {
+        //   // The card has been declined
+        // }
+    });
+});
+
+
+app.listen(port, () => console.log(`listening on port ${port}`));    

@@ -101,6 +101,20 @@
     margin-top: 20px;
 }
 
+.learn:hover{
+    background-color: #e6233d;    
+    color: white; 
+    border: none;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2); 
+}
+
+.learn2:hover{
+    background-color: #253447;    
+    color: white; 
+    border: none;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2); 
+}
+
 .btn_start {
     display: flex;
     width: 225px;
@@ -115,6 +129,13 @@
     font-weight: bold;
     border-radius: 50px;
     opacity: 0.9;
+}
+
+.btn_start:hover {
+    background-color: #e6233d;    
+    color: white; 
+    border: none;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);   
 }
 
 .idea {

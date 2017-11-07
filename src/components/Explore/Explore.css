@@ -5,7 +5,12 @@
     min-height: 100vh;
 }
 
-.main_container{
+.explore-container{
+    width:375px;
+    background: white;
+}
+
+.explore-box {
     width:375px;
     background: white;
 }

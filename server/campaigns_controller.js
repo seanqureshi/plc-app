@@ -2,7 +2,7 @@ module.exports = {
     createCamp: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
   
-      dbInstance.create_campaign([req.body.camp_name, req.body.desired_amt, req.body.overview, req.body.cover_img])
+      dbInstance.create_campaign([req.body.camp_name, req.body.desired_amt, req.body.overview, req.body.cover_img, req.user.user_id])
         .then( () => res.status(200).send() )
         .catch( () => res.status(500).send() );
     },

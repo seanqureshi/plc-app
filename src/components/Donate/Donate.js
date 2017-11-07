@@ -12,11 +12,12 @@ export default class Donate extends Component {
         super();
 
         this.state = {
-            amount: 0
+            amount: 0,
         }
         this.buttonClick1 = this.buttonClick1.bind(this);
         this.buttonClick2 = this.buttonClick2.bind(this);
         this.buttonClick3 = this.buttonClick3.bind(this);
+        this.handleAmt = this.handleAmt.bind(this);
     }
 
     buttonClick1() {
@@ -37,12 +38,32 @@ export default class Donate extends Component {
         })
     }
 
-    onToken = (token) => {
-        token.card = void 0;
-        axios.post('/api/payment', { token, amount: this.state.amount }).then(response => {
-            alert('Payment Processed!')
+    handleAmt(e) {
+        this.setState({
+            amount: (e.target.value*100),
         })
     }
+
+    handleAmt(e) {
+        this.setState({
+            amount: (e.target.value*100),
+        })
+    }
+
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post('/api/payment', { token, amount: this.state.amount }, {
+            successRedirect: 'http://localhost:3000/mobile',
+            failureRedirect: alert('payment erorr')
+        })
+    }
+
+    // onToken = (token) => {
+    //     token.card = void 0;
+    //     axios.post('/api/payment', { token, amount: this.state.amount }.then(res => {
+    //         res.redirect('http://localhost:3000/thanks')
+    //     })
+    // }
 
     render() {
         return (
@@ -60,6 +81,7 @@ export default class Donate extends Component {
                         </div>
                         <div className="form-UI">
                             <TextField
+                                onChange={(e) => this.handleAmt(e)}
                                 hintText="Ex. $500"
                                 floatingLabelText="Other Amount"
                             /><br />

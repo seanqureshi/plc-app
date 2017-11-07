@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 export default class CampaignCard extends Component {
     render() {
         return (
-            <div>
-                <img src={ this.props.img } alt="Campaign Idea" width="100%" />
+            <div className="camp-card">
+                <img src={ this.props.img } alt="Campaign Idea" width="375px"/>
                 <Link to ={ this.props.path }>
                     <center><div className ="explore_btn">EXPLORE CAMPAIGN</div></center>
                 </Link>

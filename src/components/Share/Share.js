@@ -13,35 +13,37 @@ import './Share.css';
 export default class Share extends Component {
     render() {
         return (
-            <section className = "main_container">
-                <MobileNav />
-                <span>
-                    <img src = { Friends } alt="Share the Word with Friends" width="100%"/>
-                    <h1 className = "title">SPREAD THE WORD!</h1>
+            <main className="wrap">
+                <div className="share-container">
+                    <MobileNav />
+                    <section className="main_container">
+                        <img src={Friends} alt="Share the Word with Friends" width="100%" />
+                        <h1 className="title">SPREAD THE WORD!</h1>
                         <center><div className="box"></div></center>
                         <center><div className="social">
                             <a href='http://wwww.facebook.com/preemptivelove'>
-                            <img className = "social_box" src= { Facebook } alt="Facebook Icon" width="100px" /></a>
+                                <img className="social_box" src={Facebook} alt="Facebook Icon" width="100px" /></a>
                             <a href='http://www.twitter.com/preemptivelove'>
-                            <img className = "social_box" src= { Twitter } alt="Twitter Icon" width="100px" /></a>
-                            <a href='http://www.instagram.com/preemptivelove'><img className = "social_box" src= { Instagram } alt="Instagram Icon" width="100px" /></a>
+                                <img className="social_box" src={Twitter} alt="Twitter Icon" width="100px" /></a>
+                            <a href='http://www.instagram.com/preemptivelove'><img className="social_box" src={Instagram} alt="Instagram Icon" width="100px" /></a>
                         </div></center>
-                    <h1 className = "title">INCREASE IMPACT!</h1>
-                    <center><div className="box"></div></center>
-                    <center><img className="convo" src={ Conversation } alt="Conversation Icon" width="150px" /></center>
-                    <p className="share_text">Help complete this campaign by sharing these needs with your network or step onto the frontlines and create your own campaign. Give a refugee-made gift or wear your love through a purchase on our store.</p>
-                    <div className="btn_container">
-                        
-                        <Link to="/campaign">
-                        <center><div className ="share_btn">CAMPAIGN</div></center>
-                        </Link>
-                        <a href="https://preemptivelove.shop/">
-                        <center><div className ="share_btn">SHOP</div></center>
-                        </a>
-                    </div>
-                </span>            
-               
-            </section>
+                        <h1 className="title">INCREASE IMPACT!</h1>
+                        <center><div className="box"></div></center>
+                        <center><img className="convo" src={Conversation} alt="Conversation Icon" width="150px" /></center>
+                        <div className="text-container">
+                            <p className="share_text">Help complete this campaign by sharing these needs with your network or step onto the frontlines and create your own campaign. Give a refugee-made gift or wear your love through a purchase on our store.</p>
+                            <div className="btn_container">
+                                <Link to="/campaign">
+                                    <center><div className="share_btn">CAMPAIGN</div></center>
+                                </Link>
+                                <a href="https://preemptivelove.shop/">
+                                    <center><div className="share_btn">SHOP</div></center>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
         )
     }
 }

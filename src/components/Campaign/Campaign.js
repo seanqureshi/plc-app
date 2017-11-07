@@ -4,7 +4,6 @@ import Banner from './img/loveanyways.png';
 import Insert from './img/insert-img.png';
 import './Campaign.css';
 import TextFieldExampleSimple from './Form';
-import RaisedButtonExampleComplex from './Button';
 
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../ducks/users';
@@ -27,11 +26,9 @@ class Campaign extends Component {
                         <img className="profile-cover" alt="Profile Banner" src={Banner} />
                         <img className="profile-headshot" alt="Login to see your social media profile pic and name" src={user.profile_img} />
                         <div className="display-name">{user ? user.username : null}</div>
-                        <TextFieldExampleSimple />
-                        <div className="img-button">
-                            <RaisedButtonExampleComplex />
+                        <div className="form-styling">
+                            <TextFieldExampleSimple />
                         </div>
-                        <input className="submit_btn" type="submit" name="submit" value="CREATE" />
                     </div>
                 </section>
             </main>

@@ -53,31 +53,3 @@
     font-size: x-large;
 }
 
-.form-box {
-    margin: 30px;
-    box-sizing: border-box;
-}
-
-.submit_btn{
-    color: #fff;
-    background-color: #e6233d;
-    margin-top: 15px;
-    width: 375px;
-    height: 50px;
-    font-family: Arial;
-    font-size: 1.3em;
-    border: none;
-    cursor: pointer;
-    border-radius: 2px;
-    text-shadow: none;
-}
-
-.form-UI {
-    box-sizing: border-box;
-    margin: 2px 55px;  
-}
-
-.img-button {
-    box-sizing: border-box;
-    margin: 20px 55px; 
-}

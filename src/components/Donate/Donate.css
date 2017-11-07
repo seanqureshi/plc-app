@@ -20,7 +20,7 @@
     font-family: serif;
     color: #253447;
     background: white;
-    width: 375px;
+    width: 295px;
     padding: 40px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .donate-pic {
-    width: 375px;
+    width: 295px;
     padding: 40px;
     margin-top: -40px;
     border: solid 5 #253447;
@@ -57,6 +57,13 @@
     font-family: serif;
     color: #253447;
     font-size: 15px;
+}
+
+.donate-box:hover {
+    background-color: #e6233d;    
+    color: white; 
+    border: none;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);        
 }
 
 .stripe-submit {

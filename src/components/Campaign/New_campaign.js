@@ -11,10 +11,7 @@ import Instagram from '../Share/img/sm-instagram.png';
 import MobileNav from '../Mobile_navbar/Mobile_navbar';
 import './Idea.css';
 import { Tabs, Tab } from 'material-ui/Tabs';
-// import SwipeableViews from 'react-swipeable-views';
 
-// import Tabs from '../comps/Tabs.js'
-// import Pane from '../Pane/Pane';
 
 
 // import Meter from 'grommet/components/Meter';
@@ -32,9 +29,6 @@ const styles = {
         marginBottom: 12,
         fontWeight: 400,
     },
-    InkBar: {
-        backgroundColor: 'none'
-    }
     
 };
 
@@ -87,7 +81,6 @@ export default class Idea1 extends Component {
                     <div className="camp-tabs">
                         <Tabs 
                             style={styles.contentContainerStyle}
-                            InkBar={false}
                             value={this.state.value}
                             onChange={this.handleChange}
                         >
