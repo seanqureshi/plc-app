@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
 import Dropzone from 'react-dropzone';
+import { Line } from 'rc-progress';
+import Checkmark from './img/checkmark.jpg'
 import './Form.css';
-// import AddImg from './AddImg';
+
 
 export default class TextFieldExampleSimple extends Component {
 
@@ -11,15 +13,28 @@ export default class TextFieldExampleSimple extends Component {
     super();
 
     this.state = {
-        image: []
+      image: [],
+      percent: 0,
+      check: false
     }
     this.handleDrop = this.handleDrop.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-}
+    this.increase = this.increase.bind(this);
+  }
 
-handleDrop = files => {
-  // Push all the axios request promise into a single array
-  const uploaders = files.map(file => {
+  increase() {
+    const percent = this.state.percent + 1;
+    if (percent >= 75) {
+      clearTimeout(this.tm);
+      return;
+    }
+    this.setState({ percent });
+    this.tm = setTimeout(this.increase, 10);
+  }
+
+  handleDrop = files => {
+    // Push all the axios request promise into a single array
+    const uploaders = files.map(file => {
       // Initial FormData
       const formData = new FormData();
       formData.append("file", file);
@@ -27,24 +42,26 @@ handleDrop = files => {
       formData.append("upload_preset", "yqygvg0o"); // Replace the preset name with your own
       formData.append("api_key", "571626964235977"); // Replace API key with your own Cloudinary key
       formData.append("timestamp", (Date.now() / 1000) | 0);
-
+      this.increase()
       // Make an AJAX upload request using Axios (replace Cloudinary URL below with your own)
       return axios.post("https://api.cloudinary.com/v1_1/codeinfuse/image/upload", formData, {
-          headers: { "X-Requested-With": "XMLHttpRequest" },
+        headers: { "X-Requested-With": "XMLHttpRequest" },
       }).then(response => {
-          // const fileURL = response.data.secure_url
-          this.setState({
-              image: response.data.secure_url
-          }) // You should store this URL for future references in your app
-          console.log(response.data)
+        // const fileURL = response.data.secure_url
+        this.setState({
+          image: response.data.secure_url,
+          percent: 100,
+          check: true
+        }) // You should store this URL for future references in your app
+        console.log(response.data)
       })
-  });
+    });
 
-  // Once all the files are uploaded
-  axios.all(uploaders).then(() => {
-      alert('images added');
-  });
-}
+    // // Once all the files are uploaded
+    // axios.all(uploaders).then(() => {
+    //   alert('images added');
+    // });
+  }
 
   handleSubmit() {
     // console.log(this.name.input.value)
@@ -87,9 +104,11 @@ handleDrop = files => {
               onDrop={this.handleDrop}
               multiple
               accept="image/*" >
-              <p> UPLOAD COVER IMAGE</p>
+              UPLOAD COVER IMAGE
+              <Line onClick strokeWidth="2" percent={this.state.percent} strokeColor="#e6233d" />
             </Dropzone>
           </button>
+          {this.state.check ? <img class="checkmark" src={ Checkmark } alt="cover submitted"></img> : null}
         </div>
         <div className="submit_btn"
           onClick={() => this.handleSubmit()}
