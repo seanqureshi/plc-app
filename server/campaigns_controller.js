@@ -3,14 +3,14 @@ module.exports = {
       const dbInstance = req.app.get('db');
       console.log(req.body)
       dbInstance.create_campaign([req.body.camp_name, req.body.desired_amt, req.body.overview, req.body.cover_img, req.user.user_id])
-        .then( () => res.status(200).send() )
+        .then( (response) => res.status(200).send(response) )
         .catch( () => res.status(500).send() );
     },
   
     getCamp: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
   
-      dbInstance.read_campaign([req.params.camp_id])
+      dbInstance.read_campaign([req.params.id])
         .then( campaign => res.status(200).send( campaign ) )
         .catch( () => res.status(500).send() );
     },

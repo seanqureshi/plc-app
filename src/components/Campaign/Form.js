@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
 import Dropzone from 'react-dropzone';
@@ -7,10 +9,10 @@ import Checkmark from './img/checkmark.jpg'
 import './Form.css';
 
 
-export default class TextFieldExampleSimple extends Component {
+ class TextFieldExampleSimple extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       image: [],
@@ -70,10 +72,13 @@ export default class TextFieldExampleSimple extends Component {
       desired_amt: this.refs.amount.getValue(),
       overview: this.refs.overview.getValue(),
       cover_img: this.state.image
+    }).then(response => { console.log(response)
+      this.props.history.push(`/new/${response.data[0].camp_id}`)
     })
   }
 
   render() {
+    console.log(this.props)
     return (
       <section>
         <div className="form-create">
@@ -117,3 +122,5 @@ export default class TextFieldExampleSimple extends Component {
     )
   }
 }
+
+export default withRouter(TextFieldExampleSimple)

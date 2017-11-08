@@ -9,7 +9,7 @@ import Twitter from '../Share/img/sm-twitter.png';
 import Instagram from '../Share/img/sm-instagram.png';
 
 import MobileNav from '../Mobile_navbar/Mobile_navbar';
-import './Idea.css';
+import '../Idea/Idea.css'
 import { Tabs, Tab } from 'material-ui/Tabs';
 // import SwipeableViews from 'react-swipeable-views';
 

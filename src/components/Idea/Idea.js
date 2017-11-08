@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getUserInfo } from '../../ducks/users';
+import axios from 'axios';
 
-import Wedding from './img/Wedding.png';
-import Man from './img/Man1.png';
-import Banner from './img/PLC-banner.svg';
+import Wedding from '../Idea1/img/Wedding.png';
+import Man from '../Idea1/img/Man1.png';
+import Banner from '../Idea1/img/PLC-banner.svg';
 import Facebook from '../Share/img/sm-facebook.png';
 import Twitter from '../Share/img/sm-twitter.png';
 import Instagram from '../Share/img/sm-instagram.png';
-
 import MobileNav from '../Mobile_navbar/Mobile_navbar';
-import './Idea.css';
 import { Tabs, Tab } from 'material-ui/Tabs';
-
-
+import './Idea.css'
 
 // import Meter from 'grommet/components/Meter';
 
@@ -32,14 +32,26 @@ const styles = {
     
 };
 
-export default class Idea1 extends Component {
+class Idea extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            value: 0
+            value: 0,
+            campaign: []
+            // idFromUrl: props.match.params.id            
         };
     }
+
+    componentDidMount = () => {
+      axios.get(`/api/campaign/${this.props.match.params.id}`)
+      .then((response)=> {
+          this.setState({
+            campaign: response.data[0]
+          })
+      })
+    }
+    
 
     handleChange = (value) => {
         this.setState({
@@ -47,15 +59,18 @@ export default class Idea1 extends Component {
         });
     };
 
+    //{props.match.params.id}
+
     render() {
+        const user = this.props.user        
         return (
             <main className="wrap">
                 <center><section className="idea-container">
                     <MobileNav />
-                    <img className="img-container" src={Wedding} alt="Campaign Banner" />
+                    <img className="img-container" src={this.state.campaign.cover_img} alt="Campaign Banner" width="375px"/>
                     <div className="campaign_name">
-                        <img className="profile" src={Man} alt="Profile" width="65px" />
-                        <h1 className="header_title">#ToHaveAndToHolten</h1>
+                        <img className="profile" src={user.profile_img} alt="Profile" width="65px" />
+                        <h1 className="header_title">{user ? user.username : null}</h1>
                         <h3 className="header_subtitle">Wedding Gifts for Life</h3>
                     </div>
 
@@ -87,7 +102,7 @@ export default class Idea1 extends Component {
                             <Tab label="Overview" value={0}>
                                 <div>
                                     <h2 style={styles.headline}>Overview</h2>
-                                    <p>This is my story of my campaign!</p>
+                                    <p>{this.state.campaign.overview}</p>
                                 </div>
                             </Tab>
                             <Tab label="Comments" value={1}>
@@ -140,3 +155,12 @@ export default class Idea1 extends Component {
         )
     }
 }
+
+
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { getUserInfo })(Idea)

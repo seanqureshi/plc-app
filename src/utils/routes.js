@@ -11,6 +11,7 @@ import Idea3 from '../components/Idea3/Idea3';
 import Idea4 from '../components/Idea4/Idea4';
 import Share from '../components/Share/Share';
 import Campaign from '../components/Campaign/Campaign';
+import Idea from '../components/Idea/Idea';
 import Donate from '../components/Donate/Donate';
 import Thanks from '../components/Thanks/Thanks';
 
@@ -27,6 +28,7 @@ export default (
         <Route component = { Idea4 } path = "/idea4" /> 
         <Route component = { Share } path = "/share" />
         <Route component = { Campaign } path = "/campaign" />
+        <Route component = { Idea } path = "/new/:id" />
         <Route component = { Donate } path = "/donate" />
         <Route component = { Thanks } path = "/thanks" />
     </Switch>
