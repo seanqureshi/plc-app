@@ -9,9 +9,11 @@ const express = require('express'),
     massive = require('massive'),
     cc = require('./campaigns_controller'),
     stripe = require('stripe')('sk_test_z1qkTOZCBRBRxUrzRdN69F0Y'),
+    path = require('path'),
     port = 3035;
 
 const app = express();
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json());
 app.use(cors());
 app.use(session({
@@ -140,6 +142,11 @@ app.post('/api/payment', function (req, res, next) {
         // }
     });
 });
+
+
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 
 app.listen(port, () => console.log(`listening on port ${port}`));    

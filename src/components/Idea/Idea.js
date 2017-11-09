@@ -70,10 +70,10 @@ class Idea extends Component {
                     <img className="img-container" src={this.state.campaign.cover_img} alt="Campaign Banner" width="375px"/>
                     <div className="campaign_name">
                         <img className="profile" src={user.profile_img} alt="Profile" width="65px" />
-                        <h1 className="header_title">{user ? user.username : null}</h1>
-                        <h3 className="header_subtitle">Wedding Gifts for Life</h3>
+                        <h1 className="header_title">{this.state.campaign.camp_name}</h1>
                     </div>
-
+                    
+                    {/* {user ? user.username : null} */}
                     {/* <Box>
                         <Value value={40}
                             units='GB'
