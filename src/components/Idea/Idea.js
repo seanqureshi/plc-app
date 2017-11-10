@@ -29,7 +29,7 @@ const styles = {
         marginBottom: 12,
         fontWeight: 400,
     },
-    
+
 };
 
 class Idea extends Component {
@@ -38,20 +38,37 @@ class Idea extends Component {
         super(props);
         this.state = {
             value: 0,
+            donate: [],
             campaign: []
-            // idFromUrl: props.match.params.id            
         };
     }
 
-    componentDidMount = () => {
-      axios.get(`/api/campaign/${this.props.match.params.id}`)
-      .then((response)=> {
-          this.setState({
-            campaign: response.data[0]
-          })
-      })
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post('/api/payment', { token, amount: this.state.amount }, ).then(response => {
+            alert('we are in business')
+        });
+        axios.post('/api/donation', {
+            donation_amt: this.refs.donate.getValue() || this.state.amount,
+            comments: this.refs.message.getValue(),
+        })
     }
-    
+
+
+    componentDidMount = () => {
+        axios.get(`/api/donate/${this.props.match.params.id}`)
+            .then((response) => {
+                this.setState({
+                    donate: response.data[0]
+                })
+            })
+        axios.get(`/api/campaign/${this.props.match.params.id}`)
+            .then((response) => {
+                this.setState({
+                    campaign: response.data[0]
+                })
+            })
+    }
 
     handleChange = (value) => {
         this.setState({
@@ -59,20 +76,18 @@ class Idea extends Component {
         });
     };
 
-    //{props.match.params.id}
-
     render() {
-        const user = this.props.user        
+        const user = this.props.user
         return (
             <main className="wrap">
                 <center><section className="idea-container">
                     <MobileNav />
-                    <img className="img-container" src={this.state.campaign.cover_img} alt="Campaign Banner" width="375px"/>
+                    <img className="img-container" src={this.state.campaign.cover_img} alt="Campaign Banner" width="375px" />
                     <div className="campaign_name">
                         <img className="profile" src={user.profile_img} alt="Profile" width="65px" />
                         <h1 className="header_title">{this.state.campaign.camp_name}</h1>
                     </div>
-                    
+
                     {/* {user ? user.username : null} */}
                     {/* <Box>
                         <Value value={40}
@@ -94,7 +109,7 @@ class Idea extends Component {
                     </Box> */}
 
                     <div className="camp-tabs">
-                        <Tabs 
+                        <Tabs
                             style={styles.contentContainerStyle}
                             value={this.state.value}
                             onChange={this.handleChange}
@@ -123,8 +138,7 @@ class Idea extends Component {
                     </div>
 
 
-
-                    <Link to="/donate">
+                    <Link to={`/donate/${this.props.match.params.id}`}>
                         <center><div className="donate_btn">DONATE</div></center>
                     </Link>
 

@@ -29,7 +29,7 @@ export default (
         <Route component = { Share } path = "/share" />
         <Route component = { Campaign } path = "/campaign" />
         <Route component = { Idea } path = "/new/:id" />
-        <Route component = { Donate } path = "/donate" />
+        <Route component = { Donate } path = "/donate/:id" />
         <Route component = { Thanks } path = "/thanks" />
     </Switch>
 )

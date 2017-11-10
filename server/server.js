@@ -8,6 +8,7 @@ const express = require('express'),
     Auth0Strategy = require('passport-auth0'),
     massive = require('massive'),
     cc = require('./campaigns_controller'),
+    ac = require('./donors_controller'),
     stripe = require('stripe')('sk_test_z1qkTOZCBRBRxUrzRdN69F0Y'),
     path = require('path'),
     port = 3035;
@@ -95,10 +96,10 @@ app.get('/api/campaign/:id', cc.getCamp);
 app.put('/api/campaign/:id', cc.updateCamp);
 app.delete('/api/campaign/:id', cc.deleteCamp);
 
-// // DONATION ENDPOINTS
-// app.post('/api/donor', ac.addDonation );
-// app.get('/api/donors', ac.getDonations );
-// app.get('/api/donor/:id', ac.getDonation );
+// DONATION ENDPOINTS
+app.post('/api/donation', ac.addDonation );
+// app.get('/api/donations', ac.getDonations );
+// app.get('/api/donation/:id', ac.getDonation );
 
 // // COMMENTS ENDPOINTS
 // app.post('/api/comment', ac.addDonation );

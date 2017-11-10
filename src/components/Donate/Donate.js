@@ -5,8 +5,11 @@ import StripeCheckout from 'react-stripe-checkout';
 import './Donate.css';
 import Kids from './img/donate.png';
 import TextField from 'material-ui/TextField';
+import { connect } from 'react-redux';
+import { getUserInfo } from '../../ducks/users';
 
-export default class Donate extends Component {
+
+class Donate extends Component {
 
     constructor() {
         super();
@@ -18,7 +21,14 @@ export default class Donate extends Component {
         this.buttonClick2 = this.buttonClick2.bind(this);
         this.buttonClick3 = this.buttonClick3.bind(this);
         this.handleAmt = this.handleAmt.bind(this);
+        // this.handleStripe = this.handleStripe.bind(this);
     }
+
+
+    componentDidMount() {
+        this.props.getUserInfo();
+    }
+
 
     buttonClick1() {
         this.setState({
@@ -40,26 +50,25 @@ export default class Donate extends Component {
 
     handleAmt(e) {
         this.setState({
-            amount: (e.target.value*100),
+            amount: (e.target.value * 100),
         })
     }
 
     onToken = (token) => {
         token.card = void 0;
-        axios.post('/api/payment', { token, amount: this.state.amount }, {
-            successRedirect: 'http://localhost:3000/mobile',
-            failureRedirect: alert('payment erorr')
+        axios.post('/api/payment', { token, amount: this.state.amount }, ).then(response => {
+            alert('we are in business')
+        });
+        axios.post('/api/donation', {
+            donation_amt: this.refs.donate.getValue() || this.state.amount,
+            comments: this.refs.message.getValue(),
+            user_id: this.props.user.user_id,
+            camp_id: `${this.props.match.params.id}`
         })
     }
 
-    // onToken = (token) => {
-    //     token.card = void 0;
-    //     axios.post('/api/payment', { token, amount: this.state.amount }.then(res => {
-    //         res.redirect('http://localhost:3000/thanks')
-    //     })
-    // }
-
     render() {
+        console.log(this.props)
         return (
             <main className="wrap">
                 <section className="donate-container">
@@ -75,24 +84,32 @@ export default class Donate extends Component {
                         </div>
                         <div className="form-UI">
                             <TextField
+                                ref="donate"
                                 onChange={(e) => this.handleAmt(e)}
                                 hintText="Ex. $500"
                                 floatingLabelText="Other Amount"
                             /><br />
                             <TextField
+                                ref="message"
                                 hintText="Everyone deserves love. Feel free to encourage the campaign organizer here."
                                 floatingLabelText="Add Comment (Optional)"
                                 rows={3}
                                 rowsMax={5}
                             /><br />
                         </div>
-                        <StripeCheckout className="stripe-submit"
+                        <StripeCheckout 
+                            className="stripe-submit"
                             token={this.onToken}
                             stripeKey={'pk_test_yaniwfUg4A2s3HU5GhT3KVcm'}
                             amount={this.state.amount}
                             label={'Donate with Card'}
+                            name="Preemptive Love Coalition"
+                            description="Wage Peace and Save Lives Today!"
+                            panelLabel="Donate"
                             image="https://preemptivelove.gift/wp-content/uploads/2017/04/logo-sticky.png"
-                        />
+                            >
+                            <button className="btn-primary">DONATE</button>
+                            </StripeCheckout>
                     </div>
                 </section >
             </main>
@@ -100,3 +117,10 @@ export default class Donate extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { getUserInfo })(Donate)
