@@ -28,5 +28,5 @@ ALTER TABLE campaigns ADD CONSTRAINT campaigns_fk0 FOREIGN KEY ("user_id") REFER
 ALTER TABLE donations ADD CONSTRAINT donations_fk0 FOREIGN KEY ("user_id") REFERENCES "camp_users"("user_id");
 ALTER TABLE donations ADD CONSTRAINT donations_fk1 FOREIGN KEY ("camp_id") REFERENCES "camp_users"("user_id");
 
-
+ALTER TABLE campaigns ADD CONSTRAINT campaigns_fk1 FOREIGN KEY ("profile_img") REFERENCES "camp_users"("profile_img");
 

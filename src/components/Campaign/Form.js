@@ -6,10 +6,11 @@ import TextField from 'material-ui/TextField';
 import Dropzone from 'react-dropzone';
 import { Line } from 'rc-progress';
 import Checkmark from './img/checkmark.jpg'
+import { connect } from 'react-redux';
+import { getUserInfo } from '../../ducks/users';
 import './Form.css';
 
-
- class TextFieldExampleSimple extends Component {
+class TextFieldExampleSimple extends Component {
 
   constructor(props) {
     super(props);
@@ -22,6 +23,10 @@ import './Form.css';
     this.handleDrop = this.handleDrop.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.increase = this.increase.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getUserInfo();
   }
 
   increase() {
@@ -71,8 +76,10 @@ import './Form.css';
       camp_name: this.refs.name.getValue(),
       desired_amt: this.refs.amount.getValue(),
       overview: this.refs.overview.getValue(),
-      cover_img: this.state.image
-    }).then(response => { console.log(response)
+      cover_img: this.state.image,
+      profile_img: this.props.user.profile_img
+    }).then(response => {
+      console.log(response)
       this.props.history.push(`/new/${response.data[0].camp_id}`)
     })
   }
@@ -113,7 +120,7 @@ import './Form.css';
               <Line onClick strokeWidth="2" percent={this.state.percent} strokeColor="#e6233d" />
             </Dropzone>
           </button>
-          {this.state.check ? <img class="checkmark" src={ Checkmark } alt="cover submitted"></img> : null}
+          {this.state.check ? <img className="checkmark" src={Checkmark} alt="cover submitted"></img> : null}
         </div>
         <div className="submit_btn"
           onClick={() => this.handleSubmit()}
@@ -123,4 +130,10 @@ import './Form.css';
   }
 }
 
-export default withRouter(TextFieldExampleSimple)
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, { getUserInfo })(withRouter(TextFieldExampleSimple))
