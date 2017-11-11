@@ -29,7 +29,6 @@ const styles = {
         marginBottom: 12,
         fontWeight: 400,
     },
-
 };
 
 class Idea extends Component {
@@ -38,23 +37,22 @@ class Idea extends Component {
         super(props);
         this.state = {
             value: 0,
-            donate: [],
             campaign: [],
-            donation: [],
-            total: 0
+            total: 0,
+            donorinfo: []
         };
     }
 
-    onToken = (token) => {
-        token.card = void 0;
-        axios.post('/api/payment', { token, amount: this.state.amount }, ).then(response => {
-            alert('we are in business')
-        });
-        axios.post('/api/donation', {
-            donation_amt: this.refs.donate.getValue() || this.state.amount,
-            comments: this.refs.message.getValue(),
-        })
-    }
+    // onToken = (token) => {
+    //     token.card = void 0;
+    //     axios.post('/api/payment', { token, amount: this.state.amount }, ).then(response => {
+    //         alert('we are in business')
+    //     });
+    //     axios.post('/api/donation', {
+    //         donation_amt: this.refs.donate.getValue() || this.state.amount,
+    //         comments: this.refs.message.getValue(),
+    //     })
+    // }
 
 
     componentDidMount = () => {
@@ -70,18 +68,12 @@ class Idea extends Component {
                     campaign: response.data[0]
                 })
             })
-        // axios.get(`/api/donation/${this.props.match.params.id}`)
-        //     .then((response) => {
-        //         this.setState({
-        //             donations: response.data[0]
-        //         })
-        //         console.log(response.data)
-        //     })
         axios.get(`/api/donation/${this.props.match.params.id}`)
             .then((response) => {
                 this.setState({
-                    total: (+Object.values(response.data[0])/100)
+                    donorinfo: response.data[0]
                 })
+                console.log(response.data)
                 // console.log(+Object.values(response.data[0])/100)
             })
     }
@@ -97,7 +89,7 @@ class Idea extends Component {
 
         //     const resultsComment = this.state.results.map((c, i) => {
         //         return (
-        //             key={i}
+        //             key={i},
         //             comment={c.comment}
         //  )
         // })      
@@ -108,15 +100,14 @@ class Idea extends Component {
                     <MobileNav />
                     <img className="img-container" src={this.state.campaign.cover_img} alt="Campaign Banner" width="375px" />
                     <div className="campaign_name">
-                        <img className="profile" src={user.profile_img} alt="Profile" width="65px" />
+                        <img className="profile" src={this.state.campaign.profile_img} alt="Profile" width="65px" />
                         <h1 className="header_title">{this.state.campaign.camp_name}</h1>
                     </div>
                     <div className="donation-bar">
-                        <h1 className="tracking-amt">Current: ${this.state.total}</h1>
+                        <h1 className="tracking-amt">Current: ${this.state.donorinfo ? this.state.donorinfo.donation_amt : 0}</h1>
                         <h1 className="tracking-amt">Goal: ${this.state.campaign.desired_amt}</h1>
                     </div>
 
-                    {/* {user ? user.username : null} */}
                     {/* <Box>
                         <Value value={40}
                             units='GB'
@@ -138,6 +129,7 @@ class Idea extends Component {
 
                     <div className="camp-tabs">
                         <Tabs
+                            inkBarStyle={{background: 'none'}}
                             style={styles.contentContainerStyle}
                             value={this.state.value}
                             onChange={this.handleChange}
@@ -151,14 +143,14 @@ class Idea extends Component {
                             <Tab label="Comments" value={1}>
                                 <div>
                                     <h2 style={styles.headline}>Comments</h2>
-                                    <p>{this.state.donation.comments}</p>
+                                    <p>{this.state.donorinfo ? this.state.donorinfo.comments : "No comments yet"}</p>
                                 </div>
                             </Tab>
                             <Tab label="Backers" value={2}>
                                 <div>
                                     <h2 style={styles.headline}>Backers</h2>
 
-                                    <p>{this.state.donation.donation_amt}</p>
+                                    <p>{this.state.donorinfo ? this.state.donorinfo.donation_amt : "No backers yet"}</p>
                                 </div>
                             </Tab>
                         </Tabs>

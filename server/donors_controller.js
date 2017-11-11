@@ -8,7 +8,7 @@ module.exports = {
   },
   getDonation: (req, res, next) => {
     const dbInstance = req.app.get('db');
-    dbInstance.read_donation([parseInt(req.params.id)])
+    dbInstance.read_donation([req.params.id])
       .then(donation => res.status(200).send(donation))
       .catch(() => res.status(500).send());
   },

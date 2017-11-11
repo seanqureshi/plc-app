@@ -58,7 +58,7 @@ class Donate extends Component {
         token.card = void 0;
         axios.post('/api/payment', { token, amount: this.state.amount }, )
         axios.post('/api/donation', {
-            donation_amt: this.refs.donate.getValue() || this.state.amount,
+            donation_amt: ((this.refs.donate.getValue())*100) || this.state.amount,
             comments: this.refs.message.getValue(),
             user_id: this.props.user.user_id,
             camp_id: `${this.props.match.params.id}`

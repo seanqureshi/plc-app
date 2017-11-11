@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios';
 import TextField from 'material-ui/TextField';
@@ -81,7 +80,7 @@ class TextFieldExampleSimple extends Component {
     }).then(response => {
       // console.log(response)
       this.props.history.push(`/new/${response.data[0].camp_id}`)
-    })
+    }) 
   }
 
   render() {

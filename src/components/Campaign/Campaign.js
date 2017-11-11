@@ -44,11 +44,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { getUserInfo })(Campaign)
-
-// this.state = {
-//     username: '',
-//     profile_img: '',
-//     camp_name: '',
-//     desired_amt: '',
-//     overview: '',
-//     cover_img: ''
