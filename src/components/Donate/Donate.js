@@ -7,6 +7,7 @@ import Kids from './img/donate.png';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../ducks/users';
+import { withRouter } from 'react-router-dom'
 
 
 class Donate extends Component {
@@ -15,13 +16,12 @@ class Donate extends Component {
         super();
 
         this.state = {
-            amount: 0,
+            amount: 0
         }
         this.buttonClick1 = this.buttonClick1.bind(this);
         this.buttonClick2 = this.buttonClick2.bind(this);
         this.buttonClick3 = this.buttonClick3.bind(this);
         this.handleAmt = this.handleAmt.bind(this);
-        // this.handleStripe = this.handleStripe.bind(this);
     }
 
 
@@ -56,19 +56,20 @@ class Donate extends Component {
 
     onToken = (token) => {
         token.card = void 0;
-        axios.post('/api/payment', { token, amount: this.state.amount }, ).then(response => {
-            alert('we are in business')
-        });
+        axios.post('/api/payment', { token, amount: this.state.amount }, )
         axios.post('/api/donation', {
             donation_amt: this.refs.donate.getValue() || this.state.amount,
             comments: this.refs.message.getValue(),
             user_id: this.props.user.user_id,
             camp_id: `${this.props.match.params.id}`
-        })
-    }
+        }).then(response => {
+            // console.log(response)
+            this.props.history.push(`/new/${response.data[0].camp_id}`)
+          })
+        }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <main className="wrap">
                 <section className="donate-container">
@@ -123,4 +124,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getUserInfo })(Donate)
+export default connect(mapStateToProps, { getUserInfo })(withRouter(Donate))

@@ -60,7 +60,7 @@ class TextFieldExampleSimple extends Component {
           percent: 100,
           check: true
         }) // You should store this URL for future references in your app
-        console.log(response.data)
+        // console.log(response.data)
       })
     });
 
@@ -79,13 +79,13 @@ class TextFieldExampleSimple extends Component {
       cover_img: this.state.image,
       profile_img: this.props.user.profile_img
     }).then(response => {
-      console.log(response)
+      // console.log(response)
       this.props.history.push(`/new/${response.data[0].camp_id}`)
     })
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <section>
         <div className="form-create">

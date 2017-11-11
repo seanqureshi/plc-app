@@ -98,8 +98,9 @@ app.delete('/api/campaign/:id', cc.deleteCamp);
 
 // DONATION ENDPOINTS
 app.post('/api/donation', ac.addDonation );
-// app.get('/api/donations', ac.getDonations );
+app.get('/api/donations', ac.getDonations );
 // app.get('/api/donation/:id', ac.getDonation );
+app.get('/api/donation/:id', ac.updateTotal);
 
 // // COMMENTS ENDPOINTS
 // app.post('/api/comment', ac.addDonation );

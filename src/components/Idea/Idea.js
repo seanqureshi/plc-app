@@ -39,7 +39,9 @@ class Idea extends Component {
         this.state = {
             value: 0,
             donate: [],
-            campaign: []
+            campaign: [],
+            donation: [],
+            total: 0
         };
     }
 
@@ -68,6 +70,20 @@ class Idea extends Component {
                     campaign: response.data[0]
                 })
             })
+        // axios.get(`/api/donation/${this.props.match.params.id}`)
+        //     .then((response) => {
+        //         this.setState({
+        //             donations: response.data[0]
+        //         })
+        //         console.log(response.data)
+        //     })
+        axios.get(`/api/donation/${this.props.match.params.id}`)
+            .then((response) => {
+                this.setState({
+                    total: (+Object.values(response.data[0])/100)
+                })
+                // console.log(+Object.values(response.data[0])/100)
+            })
     }
 
     handleChange = (value) => {
@@ -78,6 +94,14 @@ class Idea extends Component {
 
     render() {
         const user = this.props.user
+
+        //     const resultsComment = this.state.results.map((c, i) => {
+        //         return (
+        //             key={i}
+        //             comment={c.comment}
+        //  )
+        // })      
+
         return (
             <main className="wrap">
                 <center><section className="idea-container">
@@ -86,6 +110,10 @@ class Idea extends Component {
                     <div className="campaign_name">
                         <img className="profile" src={user.profile_img} alt="Profile" width="65px" />
                         <h1 className="header_title">{this.state.campaign.camp_name}</h1>
+                    </div>
+                    <div className="donation-bar">
+                        <h1 className="tracking-amt">Current: ${this.state.total}</h1>
+                        <h1 className="tracking-amt">Goal: ${this.state.campaign.desired_amt}</h1>
                     </div>
 
                     {/* {user ? user.username : null} */}
@@ -123,15 +151,14 @@ class Idea extends Component {
                             <Tab label="Comments" value={1}>
                                 <div>
                                     <h2 style={styles.headline}>Comments</h2>
-                                    <p>You rock!</p>
+                                    <p>{this.state.donation.comments}</p>
                                 </div>
                             </Tab>
                             <Tab label="Backers" value={2}>
                                 <div>
-                                    <h2 style={styles.headline}>Comments</h2>
-                                    <p>Chris gave $2000</p>
-                                    <p>Huy gave $20</p>
-                                    <p>Mason gave $200</p>
+                                    <h2 style={styles.headline}>Backers</h2>
+
+                                    <p>{this.state.donation.donation_amt}</p>
                                 </div>
                             </Tab>
                         </Tabs>
