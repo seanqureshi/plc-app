@@ -116,7 +116,7 @@ class TextFieldExampleSimple extends Component {
               multiple
               accept="image/*" >
               UPLOAD COVER IMAGE
-              <Line onClick strokeWidth="2" percent={this.state.percent} strokeColor="#e6233d" />
+              <Line strokeWidth="2" percent={this.state.percent} strokeColor="#e6233d" />
             </Dropzone>
           </button>
           {this.state.check ? <img className="checkmark" src={Checkmark} alt="cover submitted"></img> : null}
