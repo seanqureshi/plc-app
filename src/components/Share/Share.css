@@ -10,10 +10,6 @@
   width:375px;
 }
 
-.text-container{
-  padding: 10px;
-}
-
 .box {
     width: 75px;
     height: 7px;
@@ -42,10 +38,12 @@
 .share_text {
     color: #253447;
     font-family: serif;
-    margin: 0px 20px 20px 20px;
+    margin: 25px;
+    text-align: left;
 }
 
 .share_btn {
+  display: grid;
   background-color: #7ea2bd;
   color: #fff;
   width: 150px;
@@ -53,8 +51,8 @@
   align-items: center;
   justify-content: center;
   font-family: Arial;
-  padding: 10px;
-  margin-left:20px;
+  height: 35px;
+  margin-left:25px;
   border-radius: 2px;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);      
 }

@@ -14,7 +14,7 @@ export default class Share extends Component {
     render() {
         return (
             <main className="wrap">
-                <div className="share-container">
+                <center><div className="share-container">
                     <MobileNav />
                     <section className="main_container">
                         <img src={Friends} alt="Share the Word with Friends" width="100%" />
@@ -34,15 +34,15 @@ export default class Share extends Component {
                             <p className="share_text">Help complete this campaign by sharing these needs with your network or step onto the frontlines and create your own campaign. Give a refugee-made gift or wear your love through a purchase on our store.</p>
                             <div className="btn_container">
                                 <Link to="/campaign">
-                                    <center><div className="share_btn">CAMPAIGN</div></center>
+                                    <div className="share_btn">CAMPAIGN</div>
                                 </Link>
                                 <a href="https://preemptivelove.shop/">
-                                    <center><div className="share_btn">SHOP</div></center>
+                                    <div className="share_btn">SHOP</div>
                                 </a>
                             </div>
                         </div>
                     </section>
-                </div>
+                </div></center>
             </main>
         )
     }

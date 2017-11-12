@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../ducks/users';
 import axios from 'axios';
-
-import Wedding from '../Idea1/img/Wedding.png';
-import Man from '../Idea1/img/Man1.png';
 import Banner from '../Idea1/img/PLC-banner.svg';
 import Facebook from '../Share/img/sm-facebook.png';
 import Twitter from '../Share/img/sm-twitter.png';
@@ -78,7 +75,9 @@ class Idea extends Component {
                 // console.log(`totalDonation: ${totalDonation}`)
                 // console.log(`initialDonation: ${initialDonation}`)
                 // console.log(`calcDonation: ${calcDonation}`)
-            })
+            }).then(response => {
+                this.props.getUserInfo();
+            });
     };
 
 
@@ -106,7 +105,7 @@ class Idea extends Component {
                     <img className="img-container" src={this.state.campaign.cover_img} alt="Campaign Banner" width="375px" />
                     <div className="campaign_name">
                         <img className="profile" src={this.state.campaign.profile_img} alt="Profile" width="65px" />
-                        <h1 className="header_title">{this.state.campaign.camp_name}</h1>
+                        <h1 className="camp-title">{this.state.campaign.camp_name}</h1>
                     </div>
                     <div className="donation-stats">
                         <div className="tracking-headers">
@@ -143,7 +142,7 @@ class Idea extends Component {
                             <Tab label="Backers" value={2}>
                                 <div>
                                     <h2 className="pad-tab" style={styles.headline}>Backers</h2>
-                                    <p className="pad-tab"> {user ? user.username : "Annonymous"} gave ${this.state.donorinfo ? this.state.donorinfo.donation_amt / 100 : "No backers yet"}</p>
+                                    <p className="pad-tab"> {user && this.state.donorinfo ? `${user.username} gave $${this.state.donorinfo.donation_amt / 100}`  : `No backers yet`}</p>
                                 </div>
                             </Tab>
                         </Tabs>
