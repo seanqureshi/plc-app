@@ -9,10 +9,8 @@ import Twitter from '../Share/img/sm-twitter.png';
 import Instagram from '../Share/img/sm-instagram.png';
 import MobileNav from '../Mobile_navbar/Mobile_navbar';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import './Idea.css'
-
 import { Line } from 'rc-progress';
-
+import './Idea.css'
 
 const styles = {
     contentContainerStyle: {

@@ -5,7 +5,8 @@ import Footer from '../Footer/Footer';
 import animated from 'animate.css';
 import WOW from 'wowjs';
 
-import phone from './img/iPhone.png';
+import phonehome from './img/phonehome.png'
+import phone from './img/phone-app.png';
 import dot from './img/Blue-dot.png';
 import circle from './img/Circle.png';
 import dot_white from './img/White-dot.png';
@@ -33,7 +34,7 @@ export default class Landing extends Component {
                     <center><div className="phone-panel">
                         <div width="25px"></div>
                         <h1 className="build fade animated fadeInLeft">BUILD A CAMPAIGN</h1>
-                        <img src={phone} alt="iPhone" width="290px"></img>
+                        <img src={phonehome} alt="iPhone" width="290px"></img>
                         <h1 className="build fade animated fadeInRight">AND REBUILD LIVES</h1>
                         <div className="circle_nav">
                             <a href="#first"><img src={dot} alt="nav1" width="25px"></img></a>

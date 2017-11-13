@@ -13,6 +13,70 @@
     width: 375px;
 }
 
+.circle-3x {
+    width: 375px;
+    height: 210px;
+    background-color: #253447;
+    margin-top: -40px;
+    color: white;
+}
+
+.pad-container {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+
+.dotted-circle {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: dotted 3px white;
+    font-size: xx-large;
+	padding: 16px;
+}
+
+.solid-circle {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: solid 3px white;
+    font-size: xx-large;
+	padding: 16px;
+}
+
+.para-circle-text {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: x-small;
+    width: 375px;
+}
+
+.para-circle-text p {
+    width: 80px;
+    margin-top: -13px;
+}
+
+.about-video {
+    width: 375px;
+    height: 213px;
+    background-color: black;
+    margin-top: -10px;
+}
+
+.countries-subtitles {
+    display: flex;
+    justify-content: space-between;
+    width: 265px;
+    color: #253447;
+    font-family: serif;
+    text-align: left;
+    margin-top: -30px;
+}
 
 .box {
     width: 75px;
@@ -25,6 +89,7 @@
 }
 
 .para-header {
+    width: 350px;
     color: #e6233d;
     font-family: serif;
     margin-left: 40px;
@@ -33,13 +98,14 @@
 }
 
 .paragraph-box {
+    width: 310px;
     color: #253447;
     font-family: serif;
-    margin: 40px;
     text-align: left;
 }
 
 .title {
+    width: 310px;
     display: flex;
     font-family: Arial;
     color: #253447;
@@ -57,4 +123,33 @@
     color: #e6233d;
     font-family: serif;
     padding: 18px;
+}
+
+.email-container {
+    width: 375px;
+    height: 170px;
+    background-color: #253447;
+}
+
+.email-header {
+    width: 300px;
+    color: white;
+    padding-top: 20px;
+    font-family: serif;
+    font-family: large;
+    font-weight: lighter;
+}
+
+.email {
+    height: 20px;
+    border: 2px solid #e5e5e5;
+}
+
+.icon-submit {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    width: 60px;
+    height: 26px;
+    cursor: pointer;
 }

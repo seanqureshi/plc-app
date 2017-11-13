@@ -25,6 +25,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 massive(process.env.CONNECTION_STRING).then((db) => {
     app.set('db', db);
 })

@@ -21,10 +21,10 @@ export default class Explore extends Component {
                     <MobileNav />
                     <div className="explore-box">
                         <Carousel decorators={false}>
-                            <div><CampaignCard img={Explore1} path="/idea1" /></div>
-                            <div><CampaignCard img={Explore2} path="/idea2" /></div>
-                            <div><CampaignCard img={Explore3} path="/idea3" /></div>
-                            <div><CampaignCard img={Explore4} path="/idea4" /></div>
+                            <div><CampaignCard img={Explore1} path="/new/70" /></div>
+                            <div><CampaignCard img={Explore2} path="/new/71" /></div>
+                            <div><CampaignCard img={Explore3} path="/new/72" /></div>
+                            <div><CampaignCard img={Explore4} path="/new/73" /></div>
                         </Carousel>
                         <MobileFooter />
                     </div>
